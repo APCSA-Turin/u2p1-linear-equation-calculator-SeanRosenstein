@@ -15,8 +15,8 @@ public class LinearCalculator {
     // You will have to parse the string into 4 integers, representing the 2 points.
     public LinearCalculator(String coord1, String coord2) { // <--add 2 string parameters to this constructor
         x1 = Integer.parseInt(coord1.substring(1, (coord1.indexOf(","))));
-        x2 = Integer.parseInt(coord2.substring(1, (coord2.indexOf(","))));
-        y1 = Integer.parseInt(coord1.substring((coord1.indexOf(",") + 1), (coord1.length() - 1)));
+        x2 = Integer.parseInt(coord2.substring(1, (coord2.indexOf(","))));         //parses from the start (excluding parenthesis) until the comma
+        y1 = Integer.parseInt(coord1.substring((coord1.indexOf(",") + 1), (coord1.length() - 1)));  //parses after the comma until length()-1
         y2 = Integer.parseInt(coord2.substring((coord2.indexOf(",") + 1), (coord2.length() - 1)));
     }
 
@@ -40,7 +40,7 @@ public class LinearCalculator {
 
     public void setX1(int newX) {
         x1 = newX;
-    }
+    }                                                  //getters and setters
 
     public void setY1(int newY) {
         y1 = newY;
@@ -90,7 +90,7 @@ public class LinearCalculator {
     // equations() method
     public String equation() {
         if (slope() != -999.99) {
-            if (slope() != 0 && (yInt() != 0)) {
+            if (slope() != 0 && (yInt() != 0)) {                //lots of if statements to account for all test cases (not sure if there is a better solution to implement this)
                 if(yInt()>0){
                 return "y=" + slope() + "x+" + yInt();
                 }
@@ -109,7 +109,7 @@ public class LinearCalculator {
     // roundedToHundredth(double x)-> returns double
     // calculates the input to the nearest hundredth and returns that value
     public double roundedToHundredth(double x) {
-        return (Math.round(100 * x)) / 100.0;
+        return (Math.round(100 * x)) / 100.0;                               //rounds to hundredths place using a clever trick instead of calling some weird methods
     }
 
     // printInfo() -> returns a string of information
